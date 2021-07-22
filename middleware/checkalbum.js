@@ -1,15 +1,15 @@
-import photo from "../data/photos.js"
-const checkAlbumAvailabity = (req, res) => {
-    let checker = photo.filter(obj => obj.albumId == req.params.id);
-
-    if (checker.length == 0) {
+import axios from "axios";
+const checkAlbumAvailabity = async(req, res) => {
+    let checker = await axios.get(`https://jsonplaceholder.typicode.com/albums/${req.params.id}/photos`)
+    if (checker.data.length == 0) {
         res.status(400).json([{ "data": " Album not Found" }]);
     } else {
         let result = [];
-        checker.map((data) => {
+        checker.data.map((data) => {
             result.push({ "title": data.title, "thumbnailUrl": data.thumbnailUrl })
         })
         res.status(200).json(result);
+        // console.log(checker.data);
     }
 
 

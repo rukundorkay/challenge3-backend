@@ -1,6 +1,4 @@
-import photo from "./data/photos.js";
+// import axios from 'axios';
+// const photos = await axios.get('https://jsonplaceholder.typicode.com/albums/1/photos')
 
-var foundValue = photo.filter(obj => obj.albumId === 'm');
-if (foundValue.length == 0) {
-    console.log("array not found")
-} else console.log(foundValue);
+// console.log(photos.data);
